@@ -1,0 +1,89 @@
+paso 1: 
+
+1.1. 	tener en cuenta el nombre del proyecto de manera muy exacta ya sea 
+	tenga numeros mayusculas minusculas etc.
+ 
+1.1. 	tener en cuenta el nombre de la tabla en una palabra y minuscula.
+
+1.1. 	preparar los campos de la tabla de la siguiente manera:
+
+id()
+string('fecha',12)
+smallinteger('turno')
+string('serie',4)
+integer('numero')
+string('docdni',11)
+string('nombre',250)
+string('direccion',250)
+string('telefono',16)
+float('total',16,2)
+string('garantia',64)
+string('plazoentrega',64)
+string('plazoreposicion',64)
+string('lugarentrega',64)
+string('emailcliente',64)
+string('fechavencimiento',12)
+string('observaciones',250)
+
+paso 2:
+
+2.1.	abrir esta carpeta 'generador CRUD' en un editor por ejemplo 'vs code' y
+ 	abrir en una pestana de este editor el archivo {{generador.py}} tambien puedes 
+	ver la documentacion {{documentacion}}en esta misma carpeta para guiarte
+
+2.2.	no olvidar de correr en tu consola lo siguiente:
+	
+	pip install pillow
+
+2.2. 	dar en 'run python file' y se abrira el generador, bueno colocar los datos 
+	como indeque en el {paso 1}
+
+2.3.	luego presionar los botones solo una vez el primer boton es para generar 
+	la carpeta con el nombre [nombre_tabla]s ,que se guardara la carpeta vista de 
+	tu proyecto de laravel 
+
+2.3.    una vez hays hecho todo esto da un click a los botones restantes que serviran
+	para generar el crud.
+
+paso 3:
+
+3.1.	ahora en la carpeta {routes} de tu proyecto de larave ingresa a {{web.php}} ahi en 
+	la parte de arriba donde esta las instrucciones de importacion vas a digitar el siguiente codigo:
+
+	use App\Http\Controllers\+++Controller;
+
+ojo:	borrar esto (+++) ahi vas a poner el nombre de tu tabla pero primera letra en mayuscula.
+
+3.2.	lineas mas abajo poner es siguiente codigo
+	
+	Route::resource('/---s', +++Controller::class)->name('home','')->middleware('auth');
+ojo:
+	borrar esto (---) ahi vas aponerel nombre tu tabla todo en minuscula.
+	borrar esto (+++) ahi vas a poner el nombre de tu tabla pero primera letra en mayuscula.
+
+
+3.3.	casi para finalizar vamos agregar iconos para registrar y listar nuestra tabla 
+	sabiendo que en este proyecto se esta usando la directivas de adminLTE 
+	vamos a la carpeta {config} abrir adminlte.php en la seccion ||menu Items|| colocar 
+	siguiente:
+
+	[
+            'text'       => 'Registrar +++',
+            'icon' => 'fas fa-solid fa-car',
+            'url'        => '---s/create',
+        ],   
+        [
+            'text'       => 'Listar +++',
+            'icon' => 'fas fa-solid fa-car',
+            'url'        => '---s',
+
+	],
+ojo:
+	borrar esto (---) ahi vas aponer el nombre tu tabla todo en minuscula.
+	borrar esto (+++) ahi vas a poner el nombre de tu tabla pero primera letra en mayuscula.
+
+paso 4:
+ 
+4.1.	finalmente solo hacer la migracion de la tabla con (php artisan migrate) y el programa esta 
+	listo
+
